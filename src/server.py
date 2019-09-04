@@ -13,7 +13,7 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app)
 
 def ros_callback(msg):
-    socketio.emit('newnumber', {'number': msg.x}, namespace='/test')
+    socketio.emit('newnumber', {'x': msg.x, 'y': msg.y, 'z': msg.z}, namespace='/test')
     #print(msg)
 
 @app.route('/')
@@ -23,7 +23,7 @@ def index():
 @socketio.on('connect', namespace='/test')
 def test_connect():
     print("---------------*Connected")
-    rospy.init_node('lololol', anonymous=True, disable_signals=True)
+    rospy.init_node('viz', anonymous=True, disable_signals=True)
     rospy.Subscriber('/cartesian_pose', CartesianPose, ros_callback)
     rospy.loginfo("WebSocket started")
     '''
