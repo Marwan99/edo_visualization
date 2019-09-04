@@ -21,18 +21,57 @@
 
   <div class="container" id="content">
     <div class="row">
-    <div class="col-sm-4">
-      <p>X-coordinate: <div id="log_x"></p></div>
-    </div>
-    <div class="col-sm-4">
-      <p>Y-coordinate: <div id="log_y"></p></div>
-    </div>
-    <div class="col-sm-4">
-      <p>Z-coordinate: <div id="log_z"></p></div>
-    </div>
-    </div>
-  </div>
 
+      <div class="col-sm-4">
+        <p>X-coordinate: </p>
+        <div id="log_x"></div>
+      </div>
+
+      <div class="col-sm-4">
+        <p>Y-coordinate:</p>
+        <div id="log_y"></div>
+      </div>
+
+      <div class="col-sm-4">
+        <p>Z-coordinate:</p>
+        <div id="log_z"></div>
+      </div>
+
+    </div>
+
+    <div class="colomn">
+      <div id="plot"></div>
+    </div>
+    <script>
+      // Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/3d-line1.csv', function(err, rows) {
+      //   function unpack(rows, key) {
+      //     return rows.map(function(row) {
+      //       return row[key];
+      //     });
+      //   }
+      //   var x = unpack(rows, 'x');
+      //   var y = unpack(rows, 'y');
+      //   var z = unpack(rows, 'z');
+      //   var c = unpack(rows, 'color');
+      Plotly.plot('plot', [{
+        type: 'scatter3d',
+        mode: 'lines',
+        x: [0, 1],
+        y: [0, 1],
+        z: [0, 1],
+        opacity: 1,
+        line: {
+          width: 6,
+          reversescale: false
+        }
+      }], {
+        height: 640
+      }, {
+        showSendToCloud: false
+      });
+
+    </script>
+  </div>
 
 </body>
 

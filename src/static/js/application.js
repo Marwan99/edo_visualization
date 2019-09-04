@@ -10,6 +10,8 @@ $(document).ready(function() {
     $('#log_x').html(msg.x.toString());
     $('#log_y').html(msg.y.toString());
     $('#log_z').html(msg.z.toString());
+
+    Plotly.extendTraces('plot',{x:[[msg.x]], y:[[msg.y]], z:[[msg.z]]}, [0]);
   });
 
 });
