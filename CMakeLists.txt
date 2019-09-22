@@ -7,10 +7,22 @@ project(edo_visualization)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg edo_core_msgs)
+
+## Generate added messages and services
+generate_messages(DEPENDENCIES std_msgs)
+
+## Declare a catkin package
+catkin_package()
+
+## Build talker and listener
+include_directories(include ${catkin_INCLUDE_DIRS})
+
+add_executable(data_pub src/data_pub.cpp)
+target_link_libraries(data_pub ${catkin_LIBRARIES})
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+# find_package(Boost REQUIRED COMPONENTS system)1
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -111,10 +123,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
+#include_directories(
 # include
 # ${catkin_INCLUDE_DIRS}
-)
+#)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
